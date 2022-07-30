@@ -14,41 +14,53 @@
 		></script>
 	</head>
 	<body>
-		<div id="inputs">
-			<div>
-				<input
-					id="name"
-					type="text"
-					name="title"
-					aria-label="Name"
-					placeholder="Name"
-					maxlength="30"
-					onInput="handleValue(this);"
-					autocapitalize="false"
-					autocomplete="false"
-					spellcheck="false"
-				/>
-				<span id="name-counter" class="input-counter">0</span>
-			</div>
-			<div>
-				<input
-					id="subtitle"
-					type="text"
-					name="subtitle"
-					aria-label="Subtitle"
-					placeholder="Subtitle"
-					maxlength="30"
-					onInput="handleValue(this);"
-					autocapitalize="false"
-					autocomplete="false"
-					spellcheck="false"
-				/>
-				<span id="subtitle-counter" class="input-counter">0</span>
+		<div id="preview">
+			<input
+				id="icon"
+				type="file"
+				name="icon"
+				accept="image/*"
+				class="hidden"
+			/>
+			<label for="icon" aria-label="Select an icon">
+				<img id="icon-preview" src="icon-preview.png" />
+			</label>
+			<div id="information">
+				<div>
+					<input
+						id="name"
+						type="text"
+						name="title"
+						aria-label="Name"
+						placeholder="Name"
+						maxlength="30"
+						onInput="handleValue(this);"
+						autocapitalize="false"
+						autocomplete="false"
+						spellcheck="false"
+					/>
+					<span id="name-counter" class="input-counter">0</span>
+				</div>
+				<div>
+					<input
+						id="subtitle"
+						type="text"
+						name="subtitle"
+						aria-label="Subtitle"
+						placeholder="Subtitle"
+						maxlength="30"
+						onInput="handleValue(this);"
+						autocapitalize="false"
+						autocomplete="false"
+						spellcheck="false"
+					/>
+					<span id="subtitle-counter" class="input-counter">0</span>
+				</div>
 			</div>
 		</div>
 
 		<script>
-			const inputs = document.querySelectorAll("input")
+			const inputs = document.querySelectorAll("input[type=text]")
 			inputs.forEach((input) => {
 				const value = localStorage.getItem(`${input.id}`, input.value.length)
 				input.value = value
@@ -61,6 +73,16 @@
 				counter.innerHTML = input.value.length
 
 				localStorage.setItem(`${input.id}`, input.value)
+			}
+
+			const icon = document.getElementById("icon")
+			const iconPreview = document.getElementById("icon-preview")
+
+			icon.onchange = (e) => {
+				const [file] = icon.files
+				if (file) {
+					iconPreview.src = URL.createObjectURL(file)
+				}
 			}
 		</script>
 	</body>
