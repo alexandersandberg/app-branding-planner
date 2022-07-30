@@ -8,7 +8,7 @@ I use this myself to plan good names and subtitles for my apps.
 
 Currently, only the app's `name` and `subtitle` is available to preview, but I will add more things later on.
 
-## ✨ [Open tool in browser](https://alexandersandberg.github.io/app-branding-planner/)
+#### ✨ [Open tool in browser](https://alexandersandberg.github.io/app-branding-planner/)
 
 ---
 
