@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="/main.css" />
+	</head>
+	<body>
+		<div id="inputs">
+			<div>
+				<input
+					id="name"
+					type="text"
+					name="title"
+					aria-label="Name"
+					placeholder="Name"
+					maxlength="30"
+					onInput="handleValue(this);"
+					autocapitalize="false"
+					autocomplete="false"
+					spellcheck="false"
+				/>
+				<span id="name-counter" class="input-counter">0</span>
+			</div>
+			<div>
+				<input
+					id="subtitle"
+					type="text"
+					name="subtitle"
+					aria-label="Subtitle"
+					placeholder="Subtitle"
+					maxlength="30"
+					onInput="handleValue(this);"
+					autocapitalize="false"
+					autocomplete="false"
+					spellcheck="false"
+				/>
+				<span id="subtitle-counter" class="input-counter">0</span>
+			</div>
+		</div>
+
+		<script>
+			const inputs = document.querySelectorAll("input")
+			inputs.forEach((input) => {
+				const value = localStorage.getItem(`${input.id}`, input.value.length)
+				input.value = value
+
+				handleValue(input)
+			})
+
+			function handleValue(input) {
+				const counter = document.getElementById(`${input.id}-counter`)
+				counter.innerHTML = input.value.length
+
+				localStorage.setItem(`${input.id}`, input.value)
+			}
+		</script>
+	</body>
+</html>

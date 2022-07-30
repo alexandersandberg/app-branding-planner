@@ -1,0 +1,134 @@
+:root {
+	--font-main: system-ui, sans-serif;
+	--font-mono: Menlo, monospace;
+
+	--foreground: #000000;
+	--foreground-secondary: #222222;
+	--foreground-tertiary: #666666;
+	--background: #ffffff;
+	--background-highlighted: #eeeeee;
+	--background-secondary: #dddddd;
+	--background-tertiary: #757575;
+
+	--site-max-width: 700px;
+
+	--border-radius: 8px;
+
+	--value-space-xs: 8px;
+	--value-space-s: 16px;
+	--value-space-m: 32px;
+	--value-space-l: 48px;
+	--value-space-xl: 96px;
+	--value-space-xxl: 192px;
+	--value-space-sides: var(--value-space-s);
+
+	--space-multiplier: 1;
+
+	--space-xs: calc(var(--value-space-xs) * var(--space-multiplier));
+	--space-s: calc(var(--value-space-s) * var(--space-multiplier));
+	--space-m: calc(var(--value-space-m) * var(--space-multiplier));
+	--space-l: calc(var(--value-space-l) * var(--space-multiplier));
+	--space-xl: calc(var(--value-space-xl) * var(--space-multiplier));
+	--space-xxl: calc(var(--value-space-xxl) * var(--space-multiplier));
+	--space-sides: calc(var(--value-space-sides) * var(--space-multiplier));
+}
+
+@media screen and (min-width: 600px) {
+	:root {
+		--space-multiplier: 2;
+	}
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+blockquote,
+picture,
+figure,
+cite {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground-secondary);
+	margin: 0 auto;
+	padding: var(--space-l) var(--space-m);
+	box-sizing: border-box;
+	word-break: break-word;
+	max-width: var(--site-max-width);
+	font-family: var(--font-main);
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 1.5;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+	word-break: inherit;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#inputs {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	max-width: 100%;
+}
+
+#inputs > div {
+	display: flex;
+	align-items: center;
+}
+
+input {
+	all: unset;
+	width: 100%;
+	padding: 0px 4px;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+}
+
+input:focus {
+	border-color: var(--background-tertiary);
+}
+
+#name {
+	font-size: 24px;
+	font-weight: 700;
+	color: #1d1d1f;
+}
+
+#subtitle {
+	font-size: 18px;
+	font-weight: 400;
+	color: #636366;
+}
+
+#name:focus + #name-counter,
+#subtitle:focus + #subtitle-counter {
+	opacity: 1;
+}
+
+.input-counter {
+	flex-shrink: 0;
+	opacity: 0;
+	margin-left: var(--space-xs);
+	font-family: monospace;
+	font-size: 16px;
+	color: var(--foreground-tertiary);
+}
